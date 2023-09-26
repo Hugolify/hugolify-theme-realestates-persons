@@ -1,0 +1,6 @@
+{{ with .Params.realestates_persons }}
+  {{ $persons := where (where site.Pages "Section" "persons" ) "File.BaseFileName" "eq" . }}
+  {{ range $persons }}
+    {{ partial "commons/person" (dict "person" . "item" "person" "section" "realestates_persons") }}
+  {{ end }}
+{{ end }}

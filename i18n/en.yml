@@ -1,0 +1,8 @@
+realestates_persons:
+  all: All real estate agents
+  discover: Discover real estate agent
+  latest: Latest real estate agents
+  more: Discover more real estate agents
+  title:
+    one: Real estate agent
+    other: Real estate agents

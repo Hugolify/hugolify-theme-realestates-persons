@@ -1,0 +1,8 @@
+realestates_persons:
+  all: Tous les agents immobilier
+  discover: Découvrir l’agent immobilier
+  latest: Derniers agents immobilier
+  more: Découvrir plus d’agents immobilier
+  title:
+    one: Agent immobilier
+    other: Agents immobilier
