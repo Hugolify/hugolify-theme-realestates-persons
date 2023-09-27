@@ -1,0 +1,31 @@
+.page-realestates
+    
+    .person 
+        --bs-card-bg: #{$light}
+        --bs-card-border-radius: 1rem
+        --bs-card-spacer-x: 2rem
+        --bs-card-spacer-y: 2rem
+
+        @include media-breakpoint-up(lg)
+        position: sticky
+        top: $offset
+        z-index: 1
+        @media (prefers-reduced-motion: no-preference)
+            transition: top .3s ease
+        html.is-scrolling-down &
+            top: 1rem
+
+        .media
+            border-radius: 50%
+            margin-left: var(--bs-card-spacer-x)
+            margin-top: var(--bs-card-spacer-y)
+        .content + div
+            --bs-aspect-ratio: 100%
+            width: 100px
+        a::after
+            content: none
+        .btn:first-child
+            @extend .btn-primary
+        .btn:nth-child(2)
+            @extend .btn-outline-primary
+

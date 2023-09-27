@@ -1,6 +1,45 @@
 {{ with .Params.realestates_persons }}
   {{ $persons := where (where site.Pages "Section" "persons" ) "File.BaseFileName" "eq" . }}
   {{ range $persons }}
-    {{ partial "commons/person" (dict "person" . "item" "person" "section" "realestates_persons") }}
+
+    {{ with . }}
+      <aside class="person">
+        <div class="content">
+          {{ $persons_statutes := "realestates/persons_statutes.html" }}
+          {{ if templates.Exists ( printf "partials/%s" $persons_statutes ) }}
+            {{ partial $persons_statutes . }}
+          {{ end }}
+          {{ with .Title }}
+            <p class="name">{{ partial "func/PrepareHTML" . }}</p>
+          {{ end }}
+          {{ with .Params.contact }}
+            <div>
+              {{ with .email }}
+                <a class="btn" href="mailto:{{.}}">{{ i18n "contact.me" }}</a>
+              {{ end }}
+              {{ with .phone }}
+                <a class="btn" href="tel:{{.}}">{{.}}</a>
+              {{ end }}
+            </div>
+          {{ end }}
+          
+        </div>
+        {{ with .Params.image}}
+          {{ $desktop := site.Params.persons.realestates.desktop }}
+          {{ $mobile := site.Params.persons.realestates.mobile }}
+          <div class="media">
+            {{ partial "commons/image.html" (dict
+              "src" .src
+              "alt" .alt
+              "desktop" $desktop
+              "mobile" $mobile
+              "picture_class" "avatar"
+              "crop" "top"
+            ) }}
+          </div>
+        {{ end }}
+      </aside>
+    {{ end }}
+
   {{ end }}
 {{ end }}
