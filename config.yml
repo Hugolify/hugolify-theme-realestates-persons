@@ -11,12 +11,6 @@ module:
     - source: layouts
       target: layouts
 
-params:
-  persons:
-    realestates:
-      desktop: "100x100"
-      mobile: "100x100"
-
 # Default
 permalinks:
   realestates_persons: /realestates/agents/:slug/
