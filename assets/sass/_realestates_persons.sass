@@ -1,45 +1,6 @@
-.page-realestates
-    
-    .person 
-        --bs-card-bg: #{$light}
-        --bs-card-border-radius: 1rem
-        --bs-card-spacer-x: 2rem
-        --bs-card-spacer-y: 2rem
+// Components
+@import "components/realestates_person"
+@import "components/realestates_persons"
 
-        @include media-breakpoint-up(lg)
-            position: sticky
-            top: $offset
-            z-index: 1
-            @media (prefers-reduced-motion: no-preference)
-                transition: top .3s ease
-            html.is-scrolling-down &
-                top: 1rem
-
-        .media
-            --bs-aspect-ratio: 100%
-            border-radius: 50%
-            margin-left: var(--bs-card-spacer-x)
-            margin-top: var(--bs-card-spacer-y)
-            width: 100px
-        a::after
-            content: none
-        ul
-            font-size: $small-font-size
-            list-style: none
-            line-height: 1.8
-            padding-left: 0
-            margin-bottom: 1.5rem
-            margin-top: 1.5rem
-            @if variable-exists(bootstrap-icons-map)
-                b
-                    display: none
-                .email
-                    &::before
-                        @include icon("envelope")
-                        margin-right: .5em
-                .phone
-                    &::before
-                        @include icon("phone")
-                        margin-right: .5em
-        .btn
-            @extend .btn-primary
+// Pages
+@import "theme/pages/realestate"
