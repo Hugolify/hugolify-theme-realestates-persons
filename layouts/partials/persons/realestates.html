@@ -1,6 +1,2 @@
-{{ partial "commons/latest-pages-by-taxonomy" (dict 
-  "section" "realestates" 
-  "taxonomy" "realestates_persons"
-  "limit" 3
-  "name" .Title
-  "filename" .File.BaseFileName) }}
+{{ partial "persons/realestates-for-sale" . }}
+{{ partial "persons/realestates-sale" . }}

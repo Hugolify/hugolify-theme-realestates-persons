@@ -1,0 +1,12 @@
+{{ $additionalParams := where site.RegularPages "Params.offer.sold" false}}
+{{ if $additionalParams }}
+  {{ $title := "Biens proposés à la vente par Louis" }}
+  {{ partial "commons/latest-pages-by-taxonomy" (dict 
+    "section" "realestates" 
+    "taxonomy" "realestates_persons"
+    "limit" 3
+    "title" $title
+    "name" .Title
+    "additionalParams" $additionalParams
+    "filename" .File.BaseFileName) }}
+{{ end }}
