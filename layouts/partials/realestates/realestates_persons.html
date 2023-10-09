@@ -1,8 +1,6 @@
 {{ range .Params.realestates_persons }}
-  {{ $persons := where (where site.Pages "Section" "persons" ) "File.BaseFileName" "eq" . }}
-  {{ range $persons }}
-
-    {{ with . }}
+  {{ $persons := first 1 (where (where site.Pages "Section" "persons" ) "File.BaseFileName" "eq" .) }}
+  {{ with (index $persons 0) }}
       <aside class="person">
         <div class="content">
           {{ $persons_statutes := "realestates/persons_statutes.html" }}
@@ -31,7 +29,5 @@
           </div>
         {{ end }}
       </aside>
-    {{ end }}
-
   {{ end }}
 {{ end }}
