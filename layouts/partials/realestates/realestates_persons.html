@@ -1,33 +1,7 @@
-{{ range .Params.realestates_persons }}
-  {{ $persons := first 1 (where (where site.Pages "Section" "persons" ) "File.BaseFileName" "eq" .) }}
-  {{ with (index $persons 0) }}
-      <aside class="person">
-        <div class="content">
-          {{ $persons_statutes := "realestates/persons_statutes.html" }}
-          {{ if templates.Exists ( printf "partials/%s" $persons_statutes ) }}
-            {{ partial $persons_statutes . }}
-          {{ end }}
-          {{ with .Title }}
-            <p class="name">{{ partial "func/PrepareHTML" . }}</p>
-          {{ end }}
-          {{ with .Params.contact }}
-            {{ partial "commons/contact/contacts.html" . }}
-          {{ end }}
-          <p><a class="btn" href="{{ .Permalink }}">{{ i18n "more" }}</a></p>
-        </div>
-        {{ with .Params.image}}
-          {{ $desktop := site.Params.persons.realestates.desktop }}
-          {{ $mobile := site.Params.persons.realestates.mobile }}
-          <div class="media">
-            {{ partial "commons/image.html" (dict
-              "src" .src
-              "alt" .alt
-              "desktop" $desktop
-              "mobile" $mobile
-              "crop" "top"
-            ) }}
-          </div>
-        {{ end }}
-      </aside>
-  {{ end }}
+{{ range first 1 (.GetTerms "realestates_persons") }}
+  {{ partial "commons/person.html" (dict 
+    "person" . 
+    "show_description" false 
+    "show_contacts" true
+    ) }}
 {{ end }}

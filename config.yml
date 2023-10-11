@@ -13,7 +13,7 @@ module:
 
 params:
   persons:
-    realestates:
+    realestates_persons:
       desktop: "100x100"
       mobile: "100x100"
 
