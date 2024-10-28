@@ -1,6 +1,6 @@
-{{ $additionalParams := where site.RegularPages "Params.offer.sold" false}}
-{{ if $additionalParams }}
-  {{ $title := i18n "realestates.for_sale_by" (dict "Person" .Title "count" 2) }}
+{{- $additionalParams := where site.RegularPages "Params.offer.sold" false -}}
+{{- if $additionalParams }}
+  {{- $title := i18n "realestates.for_sale_by" (dict "Person" .Title "count" 2) -}}
   {{ partial "commons/latest-pages-by-taxonomy" (dict 
     "section" "realestates" 
     "taxonomy" "realestates_persons"
@@ -9,4 +9,4 @@
     "name" .Title
     "additionalParams" $additionalParams
     "filename" .File.TranslationBaseName) }}
-{{ end }}
+{{ end -}}
