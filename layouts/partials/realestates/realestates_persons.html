@@ -1,7 +1,9 @@
 {{ range first 1 (.GetTerms "realestates_persons") }}
   {{ partial "commons/person.html" (dict 
     "person" . 
-    "show_description" false 
+    "show_btn" false
     "show_contacts" true
+    "show_description" false 
+    "show_image" true
     ) }}
 {{ end }}
