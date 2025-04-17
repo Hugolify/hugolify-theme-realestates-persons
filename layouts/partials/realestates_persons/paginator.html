@@ -1,3 +1,3 @@
-{{- $atf := cond (partial "func/HasImageHero" .) false true -}}
+{{- $atf := cond (partial "func/HasImageHero.html" .) false true -}}
 {{- $realestates_not_sold := where .Pages "Params.offer.sold" "ne" true -}}
 {{ partial "realestates_persons/items" (dict "pages" $realestates_not_sold "abovethefold" $atf) }}
