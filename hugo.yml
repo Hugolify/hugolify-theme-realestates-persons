@@ -20,8 +20,9 @@ params:
 
 # Default
 permalinks:
-  realestates_persons: /realestates/agents/:slug/
-  section:
+  taxonomy:
     realestates_persons: /realestates/agents/
+  term:
+    realestates_persons: /realestates/agents/:slug/
 taxonomies:
   realestates_person: realestates_persons
