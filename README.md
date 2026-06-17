@@ -6,12 +6,16 @@ Edit `config/_default/module.yaml` to install the `hugolify-theme-realestates-pe
 
 ```yml
 imports:
-  - path: github.com/hugolify/hugolify-theme-realestates-persons
+  - path: github.com/hugolify/hugolify-theme-realestates-persons/v2
+  - path: github.com/hugolify/hugolify-theme-realestates/v2 # required
+  - path: github.com/hugolify/hugolify-theme-persons/v2 # required
+  - path: github.com/hugolify/hugolify-theme/v2 # required
 ```
 
 ## Depends
 
-https://www.github.com/hugolify/hugolify-theme-persons
+- https://www.github.com/hugolify/hugolify-theme-persons
+- https://www.github.com/hugolify/hugolify-theme-realestates
 
 ## Documentation
 
