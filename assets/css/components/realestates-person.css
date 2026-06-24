@@ -1,0 +1,11 @@
+/* components/realestates-person.css */
+/*
+ * Usage: <article class="item realestates_person">
+ */
+@layer components {
+  .realestates_person {
+    .btn {
+      display: none;
+    }
+  }
+}
