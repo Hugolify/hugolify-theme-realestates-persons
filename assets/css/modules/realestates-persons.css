@@ -1,0 +1,8 @@
+/* css/modules/realestates-persons.css — hugolify-theme-realestates-persons entry point */
+
+/* Components */
+@import '../components/realestate-person.css';
+@import '../components/realestates-persons.css';
+
+/* Pages */
+@import './pages/realestate.css';

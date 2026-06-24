@@ -1,0 +1,15 @@
+@layer layouts {
+  .page-realestates {
+    @media (--tablet) {
+      .sidebar .person {
+        position: sticky;
+        top: var(--header-offset-scroll-up);
+        z-index: var(--z-index-sticky);
+        
+        html.is-scrolling-down & {
+          top: var(--header-offset);
+        }
+      }
+    }
+  }
+}

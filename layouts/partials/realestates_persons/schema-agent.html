@@ -1,0 +1,47 @@
+{{- /*
+  Builds a schema.org RealEstateAgent object (as a dict) from a realestates_persons term.
+  Returns an empty dict when the related person page cannot be resolved.
+  Reused both for the standalone agent schema and as the seller of a realestate offer.
+*/ -}}
+{{- $person := partial "func/GetRealPerson.html" . -}}
+{{- $agent := dict -}}
+{{- with $person -}}
+  {{- $agent = dict
+    "@type" "RealEstateAgent"
+    "@id" .Permalink
+    "name" (.Title | plainify)
+    "url" .Permalink
+  -}}
+
+  {{- with .Params.image -}}
+    {{- $agent = merge $agent (dict "image" (.src | absURL)) -}}
+  {{- end -}}
+
+  {{- with .Description -}}
+    {{- $agent = merge $agent (dict "description" (partial "func/TruncateContent.html" (dict "content" .) | plainify)) -}}
+  {{- end -}}
+
+  {{- with .GetTerms "persons_expertises" -}}
+    {{- $knowsAbout := slice -}}
+    {{- range . -}}
+      {{- $expertise := partial "func/GetRealExpertise.html" . -}}
+      {{- $knowsAbout = $knowsAbout | append ($expertise.Title | plainify) -}}
+    {{- end -}}
+    {{- $agent = merge $agent (dict "knowsAbout" $knowsAbout) -}}
+  {{- end -}}
+
+  {{- with .Params.contact -}}
+    {{- with .email -}}{{- $agent = merge $agent (dict "email" (. | plainify)) -}}{{- end -}}
+    {{- with .phone -}}{{- $agent = merge $agent (dict "telephone" (. | plainify)) -}}{{- end -}}
+    {{- with .fax -}}{{- $agent = merge $agent (dict "faxNumber" (. | plainify)) -}}{{- end -}}
+
+    {{- $sameAs := slice -}}
+    {{- with .linkedin -}}{{- $sameAs = $sameAs | append . -}}{{- end -}}
+    {{- with .twitter -}}{{- $sameAs = $sameAs | append . -}}{{- end -}}
+    {{- with .x -}}{{- $sameAs = $sameAs | append . -}}{{- end -}}
+    {{- with .instagram -}}{{- $sameAs = $sameAs | append . -}}{{- end -}}
+    {{- with .youtube -}}{{- $sameAs = $sameAs | append . -}}{{- end -}}
+    {{- with $sameAs -}}{{- $agent = merge $agent (dict "sameAs" .) -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $agent -}}

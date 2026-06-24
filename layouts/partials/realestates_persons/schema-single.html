@@ -1,2 +1,7 @@
-{{ $person := partial "func/GetRealPerson" . }}
-{{ partial "persons/schema-single" $person }}
+{{- $agent := partial "realestates_persons/schema-agent.html" . -}}
+{{- with $agent.name -}}
+  {{- $schema := merge (dict "@context" "https://schema.org") $agent -}}
+  <script type="application/ld+json">
+    {{ $schema | jsonify (dict "indent" "  ") | safeJS }}
+  </script>
+{{- end -}}
